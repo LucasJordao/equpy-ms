@@ -9,6 +9,9 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
 import lombok.AllArgsConstructor;
 
+import java.net.URI;
+
+import static com.app.adapters.in.mappers.UserRequestMapper.toUser;
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @AllArgsConstructor
@@ -21,7 +24,8 @@ public class AuthController {
     @Path("/register")
     @Produces(APPLICATION_JSON)
     public Response register(@Valid UserRequest request) {
-//        registerUseCase.register()
-        return Response.ok(request).build();
+        var user = registerUseCase.register(toUser(request));
+
+        return Response.created(URI.create(user.getId().toString())).build();
     }
 }

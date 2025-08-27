@@ -16,7 +16,6 @@ public class UserRequest {
     @Email(message = "Email is not valid!")
     @NotBlank(message = "Email is required!")
     private String email;
-    @NotBlank(message = "Document is required!")
     @CPFCNPJValidator(message = "Document is not valid!")
     private String document;
     @NotBlank(message = "Password is required!")
