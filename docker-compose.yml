@@ -1,0 +1,9 @@
+services:
+  postgres:
+    container_name: equpy-db
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "equpy"
+    ports:
+      - "5432:5432"
